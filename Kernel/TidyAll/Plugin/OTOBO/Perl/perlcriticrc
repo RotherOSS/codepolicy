@@ -87,7 +87,7 @@ severity = 4
 lines = 20
 
 [Modules::ProhibitEvilModules]
-modules = CGI {OTOBO switched to Plack} Class::ISA Pod::Plainer Shell Switch vars {Use 'our' variables instead of 'use vars'} Data::Dumper {Use Main::Dump() instead of Dumper() and don't forget to remove debug code like print STDERR Dumper(...)} Data::Dx {No debug statements in productive code} /Acme::/ {Acme modules are just for fun} Module::Refresh {Use Kernel::System::ModuleRefresh instead}
+modules = CGI {OTOBO switched to Plack} Class::ISA File::Slurp {use Path::Class::File::slurp() instead} Pod::Plainer Shell Switch vars {Use 'our' variables instead of 'use vars'} Data::Dumper {Use Main::Dump() instead of Dumper() and don't forget to remove debug code like print STDERR Dumper(...)} Data::Dx {No debug statements in productive code} /Acme::/ {Acme modules are just for fun} Module::Refresh {Use Kernel::System::ModuleRefresh instead}
 
 [Variables::ProhibitEvilVariables]
 variables = $DB::single {clean up your debug statements}
