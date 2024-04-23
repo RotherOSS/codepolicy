@@ -2,7 +2,7 @@
 <otobo_package version="1.0">
     <Name>CodePolicy</Name>
     <Version>0.0.0</Version>
-    <Framework>10.1.x</Framework>
+    <Framework>11.0.x</Framework>
     <ModuleRequired Version="0.56">Code::TidyAll</ModuleRequired>
     <ModuleRequired Version="1.140">Perl::Critic</ModuleRequired>
     <Vendor>Rother OSS GmbH</Vendor>
