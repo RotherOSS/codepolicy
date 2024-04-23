@@ -5,6 +5,8 @@
     <Framework>11.0.x</Framework>
     <ModuleRequired Version="0.56">Code::TidyAll</ModuleRequired>
     <ModuleRequired Version="1.140">Perl::Critic</ModuleRequired>
+    <!--ModuleRequired Version="1.0.3">Perl::Critic::Community</ModuleRequired-->
+    <!--ModuleRequired Version="0.114">Perl::Critic::Policy::Variables::ProhibitUnusedVarsStricter</ModuleRequired-->
     <Vendor>Rother OSS GmbH</Vendor>
     <URL>https://otobo.de/</URL>
     <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>

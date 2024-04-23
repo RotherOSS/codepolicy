@@ -2,6 +2,11 @@
 # Policies with a lower severity policies can be explicitly added below.
 severity = 4
 
+# This is for the case when the Perl::Community policies are installed
+# and not theme is specified. Many community policies have an alias name
+# with Freenode in the name. These policies would be checked twice.
+exclude = Freenode
+
 # test scripts are scripts
 program-extensions = .pl .t
 
@@ -49,6 +54,14 @@ severity = 4
 [Variables::ProhibitUnusedVariables]
 severity = 4
 
+# allow lines like:
+#  my $ToDo = todo('too hard for now');
+#  in future: my $ToDo = $Test->{ToDo} ? todo('Timeouts occur. See https://github.com/RotherOSS/otobo/issues/748') : '';
+[Variables::ProhibitUnusedVarsStricter]
+#severity                          = 4    # activate only after the code has been cleaned up
+allow_unused_subroutine_arguments = 1
+allow_if_computed_by              = todo
+
 [BuiltinFunctions::ProhibitStringySplit]
 severity = 4
 
@@ -82,6 +95,11 @@ variables = @*          {avoid the $ref-@* error}
 
 [Subroutines::RequireFinalReturn]
 terminal_methods = FatalError CustomerFatalError
+
+# turn off some modules
+
+# because this is covered by Modules::ProhibitEvilModules
+[-Community::DiscouragedModules]
 
 # This setup does not work as
 #    return 1 unless $Content =~ m{<otrs_config.*?version="2.0"};
