@@ -16,9 +16,9 @@
 
 package TidyAll::Plugin::OTOBO::Perl::PerlTidy;
 
+use v5.24;
 use strict;
 use warnings;
-use v5.24;
 use utf8;
 
 use Moo;
@@ -31,15 +31,16 @@ extends qw(TidyAll::Plugin::OTOBO::Perl);
 use Capture::Tiny qw(capture_merged);
 
 # Require a recent version of Perl::Tidy for consistent formatting on all systems.
-use Perl::Tidy 20230912;
+use Perl::Tidy 20240511;
 
 # OTOBO modules
 
 # Force a certain version for uniformity
-if ( Perl::Tidy->VERSION() ne '20230912' ) {
-    my $Error = 'Newer versions of Perl::Tidy than v20210111 are currently not supported.';
-    $Error   .= ' Please use exactly that version (sudo cpanm Perl::Tidy@v20210111).';
+if ( Perl::Tidy->VERSION() ne '20240511' ) {
+    my $Error = 'Newer versions of Perl::Tidy than 20240511 are currently not supported.';
+    $Error   .= ' Please use exactly that version (sudo cpanm Perl::Tidy@20240511).';
     $Error   .= ' Your installed version is: ' . Perl::Tidy->VERSION() . ".\n";
+
     die $Error;
 }
 
@@ -65,8 +66,8 @@ sub transform_source {
     # perltidy reports errors in two different ways.
     # Argument/profile errors are output and an error_flag is returned.
     # Syntax errors are sent to errorfile.
-    my ( $Output, $ErrorFlag, $ErrorFile, $Destination );
-    $Output = capture_merged {
+    my ( $ErrorFlag, $ErrorFile, $Destination );
+    my $Output = capture_merged {
         $ErrorFlag = Perl::Tidy::perltidy(
             argv        => $Self->argv(),
             source      => \$Code,
@@ -74,12 +75,10 @@ sub transform_source {
             errorfile   => \$ErrorFile
         );
     };
-    if ($ErrorFile) {
-        return $Self->DieWithError("$ErrorFile");
-    }
-    if ($ErrorFlag) {
-        return $Self->DieWithError("$Output");
-    }
+
+    return $Self->DieWithError("$ErrorFile") if $ErrorFile;
+    return $Self->DieWithError("$Output")    if $ErrorFlag;
+
     if ( defined $Output ) {
         print STDERR $Output;
     }
