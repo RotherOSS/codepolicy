@@ -39,7 +39,7 @@ sub validate_source {
     LINE:
     for my $Line ( split /\n/, $Code ) {
         $Counter++;
-        if ( $Line =~ m{->ConfigItemUpdate|->ConfigItemReset}smx ) {
+        if ( $Line =~ m{->SettingUpdate|->SettingReset}smx ) {
             $ErrorMessage .= "Line $Counter: $Line\n";
         }
     }
