@@ -53,21 +53,6 @@ $ErrorMessage
 EOF
     }
 
-    LINE:
-    for my $Line ( split /\n/, $Code ) {
-        $Counter++;
-        if ( $Line =~ m{RestoreSystemConfiguration}smx ) {
-            $ErrorMessage .= "Line $Counter: $Line\n";
-        }
-    }
-
-    if ($ErrorMessage) {
-        return $Self->DieWithError(<<"EOF");
-Please don't use the 'RestoreSystemConfiguration' flag any more.
-$ErrorMessage
-EOF
-    }
-
     return;
 }
 
