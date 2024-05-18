@@ -16,12 +16,18 @@
 
 package TidyAll::Plugin::OTOBO::Perl::UnitTestConfigChanges;
 
+use v5.24;
 use strict;
 use warnings;
+use utf8;
 
+# core modules
 use File::Basename;
 
+# CPAN modules
 use Moo;
+
+# OTOBO modules
 
 extends qw(TidyAll::Plugin::OTOBO::Perl);
 
@@ -34,26 +40,26 @@ sub validate_source {
 
     return if $Self->IsPluginDisabled( Code => $Code );
 
-    my ( $ErrorMessage, $Counter );
+    my ( $ErrorMessage, $LineNo ) = ( '', 1 );
 
     LINE:
     for my $Line ( split /\n/, $Code ) {
-        $Counter++;
-        if ( $Line =~ m{->SettingUpdate|->SettingReset}smx ) {
-            $ErrorMessage .= "Line $Counter: $Line\n";
-        }
+        next LINE unless $Line =~ m{ -> (?: SettingUpdate | SettingReset ) }smx;
+
+        $ErrorMessage .= "Line $LineNo: $Line\n";
+    }
+    continue {
+        $LineNo++;
     }
 
-    if ($ErrorMessage) {
-        return $Self->DieWithError(<<"EOF");
+    return unless $ErrorMessage;
+
+    return $Self->DieWithError(<<"EOF");
 Selenium tests should modify the system configuration exclusively via
-\$Helper->ConfigSettingChange() (it has the same API as ConfigSettingUpdate()).
-This also makes "sleep" statements for mod_perl unneeded.
+\$Helper->ConfigSettingChange(). Note that this method does not have
+the same API as \$SysConfigObject->SettingUpdate().
 $ErrorMessage
 EOF
-    }
-
-    return;
 }
 
 1;
