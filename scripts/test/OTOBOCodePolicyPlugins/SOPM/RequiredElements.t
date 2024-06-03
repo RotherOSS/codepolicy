@@ -2,7 +2,7 @@
 # OTOBO is a web-based ticketing system for service organisations.
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2019-2021 Rother OSS GmbH, https://otobo.de/
+# Copyright (C) 2019-2024 Rother OSS GmbH, https://otobo.io/
 # --
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -34,7 +34,7 @@ my @Tests = (
     <Version>0.0.0</Version>
     <Framework>7.0.x</Framework>
     <Vendor>Rother OSS GmbH</Vendor>
-    <URL>https://otobo.de/</URL>
+    <URL>https://otobo.io/</URL>
     <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
     <Description Lang="en">OTOBO code quality checks.</Description>
     <PackageIsDownloadable>0</PackageIsDownloadable>
@@ -57,7 +57,7 @@ EOF
     <Version>0.0.0</Version>
     <Framework>7.0.x</Framework>
     <Vendor>Rother OSS GmbH</Vendor>
-    <URL>https://otobo.de/</URL>
+    <URL>https://otobo.io/</URL>
     <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
     <Description Lang="en">OTOBO code quality checks.</Description>
     <Filelist>
@@ -79,7 +79,7 @@ EOF
     <Version>0.0.0</Version>
     <Framework>7.0.x</Framework>
     <Vendor>Rother OSS GmbH</Vendor>
-    <URL>https://otobo.de/</URL>
+    <URL>https://otobo.io/</URL>
     <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
     <Filelist>
         <File Permission="755" Location="bin/otobo.CodePolicy.pl" />
@@ -99,7 +99,7 @@ EOF
     <Name>OTOBOCodePolicy</Name>
     <Framework>7.0.x</Framework>
     <Vendor>Rother OSS GmbH</Vendor>
-    <URL>https://otobo.de/</URL>
+    <URL>https://otobo.io/</URL>
     <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
     <Description Lang="en">OTOBO code quality checks.</Description>
     <Filelist>
@@ -120,7 +120,7 @@ EOF
     <Name>OTOBOCodePolicy</Name>
     <Version>0.0.0</Version>
     <Vendor>Rother OSS GmbH</Vendor>
-    <URL>https://otobo.de/</URL>
+    <URL>https://otobo.io/</URL>
     <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
     <Description Lang="en">OTOBO code quality checks.</Description>
     <Filelist>
@@ -141,7 +141,7 @@ EOF
     <Name>OTOBOCodePolicy</Name>
     <Version>0.0.0</Version>
     <Framework>7.0.x</Framework>
-    <URL>https://otobo.de/</URL>
+    <URL>https://otobo.io/</URL>
     <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
     <Description Lang="en">OTOBO code quality checks.</Description>
     <Filelist>
@@ -184,7 +184,7 @@ EOF
     <Version>0.0.0</Version>
     <Framework>7.0.x</Framework>
     <Vendor>Rother OSS GmbH</Vendor>
-    <URL>https://otobo.de/</URL>
+    <URL>https://otobo.io/</URL>
     <Description Lang="en">OTOBO code quality checks.</Description>
     <Filelist>
         <File Permission="755" Location="bin/otobo.CodePolicy.pl" />
@@ -205,7 +205,7 @@ EOF
     <Version>0.0.0</Version>
     <Framework>7.0.x</Framework>
     <Vendor>Rother OSS GmbH</Vendor>
-    <URL>https://otobo.de/</URL>
+    <URL>https://otobo.io/</URL>
     <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
     <Description Lang="en">OTOBO code quality checks.</Description>
     <PackageIsDownloadable>test</PackageIsDownloadable>
@@ -229,7 +229,7 @@ EOF
     <Version>0.0.0</Version>
     <Framework>7.0.x</Framework>
     <Vendor>Rother OSS GmbH</Vendor>
-    <URL>https://otobo.de/</URL>
+    <URL>https://otobo.io/</URL>
     <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
     <Description Lang="en">OTOBO code quality checks.</Description>
     <Filelist>
@@ -251,7 +251,7 @@ EOF
     <Version>0.0.0</Version>
     <Framework>7.0.x</Framework>
     <Vendor>Rother OSS GmbH</Vendor>
-    <URL>https://otobo.de/</URL>
+    <URL>https://otobo.io/</URL>
     <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
     <Description Lang="en">OTOBO code quality checks.</Description>
     <PackageIsDownloadable>0</PackageIsDownloadable>
@@ -275,7 +275,7 @@ EOF
     <Version>0.0.0</Version>
     <Framework>7.0.x</Framework>
     <Vendor>Rother OSS GmbH</Vendor>
-    <URL>https://otobo.de/</URL>
+    <URL>https://otobo.io/</URL>
     <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
     <Description Lang="en">OTOBO code quality checks.</Description>
     <Filelist>
@@ -297,7 +297,7 @@ EOF
     <Version>0.0.0</Version>
     <Framework>7.0.x</Framework>
     <Vendor>Rother OSS GmbH</Vendor>
-    <URL>https://otobo.de/</URL>
+    <URL>https://otobo.io/</URL>
     <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
     <Description Lang="en">OTOBO code quality checks.</Description>
     <PackageIsDownloadable>0</PackageIsDownloadable>
@@ -321,7 +321,7 @@ EOF
     <Version>0.0.0</Version>
     <Framework>7.0.x</Framework>
     <Vendor>Rother OSS GmbH</Vendor>
-    <URL>https://otobo.de/</URL>
+    <URL>https://otobo.io/</URL>
     <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
     <Description Lang="en">OTOBO code quality checks.</Description>
     <Filelist>
@@ -343,7 +343,7 @@ EOF
     <Version>0.0.0</Version>
     <Framework>7.0.x</Framework>
     <Vendor>Rother OSS GmbH</Vendor>
-    <URL>https://otobo.de/</URL>
+    <URL>https://otobo.io/</URL>
     <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
     <Description Lang="en">OTOBO code quality checks.</Description>
     <PackageIsDownloadable>0</PackageIsDownloadable>
@@ -367,7 +367,7 @@ EOF
     <Version>0.0.0</Version>
     <Framework>7.0.x</Framework>
     <Vendor>Rother OSS GmbH</Vendor>
-    <URL>https://otobo.de/</URL>
+    <URL>https://otobo.io/</URL>
     <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
     <Description Lang="en">OTOBO code quality checks.</Description>
     <Filelist>
@@ -389,7 +389,7 @@ EOF
     <Version>0.0.0</Version>
     <Framework>7.0.x</Framework>
     <Vendor>Rother OSS GmbH</Vendor>
-    <URL>https://otobo.de/</URL>
+    <URL>https://otobo.io/</URL>
     <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
     <Description Lang="en">OTOBO code quality checks.</Description>
     <PackageIsDownloadable>0</PackageIsDownloadable>
@@ -413,7 +413,7 @@ EOF
     <Version>0.0.0</Version>
     <Framework>7.0.x</Framework>
     <Vendor>Rother OSS GmbH</Vendor>
-    <URL>https://otobo.de/</URL>
+    <URL>https://otobo.io/</URL>
     <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
     <Description Lang="en">OTOBO code quality checks.</Description>
     <Filelist>

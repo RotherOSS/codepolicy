@@ -10,7 +10,7 @@
     <ModuleRequired>Perl::Critic</ModuleRequired>
 
     <Vendor>Rother OSS GmbH</Vendor>
-    <URL>https://otobo.de/</URL>
+    <URL>https://otobo.io/</URL>
     <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
     <Description Lang="en">OTOBO code quality checks.</Description>
     <Description Lang="hu">OTOBO kódminőség ellenőrzések.</Description>
