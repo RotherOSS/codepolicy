@@ -2,7 +2,7 @@
 # OTOBO is a web-based ticketing system for service organisations.
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2019-2024 Rother OSS GmbH, https://otobo.de/
+# Copyright (C) 2019-2024 Rother OSS GmbH, https://otobo.io/
 # --
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -36,10 +36,10 @@ sub transform_source {
     # Don't replace copyright in thirdparty code.
     return $Code if $Self->IsThirdpartyModule();
 
-    # Replace <URL>http://otobo.org/</URL> with <URL>https://otobo.de/</URL>
-    $Code =~ s{ ^ ( \s* ) \< URL \> .+? \< \/ URL \> }{$1<URL>https://otobo.de/</URL>}xmsg;
+    # Replace <URL>http://otobo.org/</URL> with <URL>https://otobo.io/</URL>
+    $Code =~ s{ ^ ( \s* ) \< URL \> .+? \< \/ URL \> }{$1<URL>https://otobo.io/</URL>}xmsg;
 
-    my $Copy = 'Rother OSS GmbH, https://otobo.de/';
+    my $Copy = 'Rother OSS GmbH, https://otobo.io/';
 
     my $Year = ( localtime(time) )[5];
     $Year += 1900;
