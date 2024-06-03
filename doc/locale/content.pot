@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2019-2024 Rother OSS GmbH, https://otobo.de/
+# Copyright (C) 2019-2024 Rother OSS GmbH, https://otobo.io/
 # This file is distributed under the same license as the OTOBO Installation Guide package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -78,7 +78,7 @@ msgid "Email: hello@otobo.de"
 msgstr ""
 
 #: ../../content/index.rst:54
-msgid "Web: https://otobo.de"
+msgid "Web: https://otobo.io"
 msgstr ""
 
 #: ../../content/index.rst:57
