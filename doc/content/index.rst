@@ -41,7 +41,7 @@ Contact
 -------
 | Rother OSS GmbH
 | Email: hello@otobo.de
-| Web: https://otobo.de
+| Web: https://otobo.io
 
 Version
 -------

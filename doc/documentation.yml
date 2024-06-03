@@ -6,13 +6,13 @@ Variables:
   doc_version: rel-11.0
   doc_yearstamp: current_yearstamp
   doc_vendor: Rother OSS GmbH
-  doc_url: https://otobo.de
+  doc_url: https://otobo.io
   doc_datestamp: current_datestamp
   doc_license: GNU Free Documentation License
 
 # project meta information
 ProjectName: OTOBO Installation Guide
-Copyright: 2019-2024 Rother OSS GmbH, https://otobo.de/
+Copyright: 2019-2024 Rother OSS GmbH, https://otobo.io/
 Author: Rother OSS GmbH
 Version: rel-11.0
 Release: rel-11.0
