@@ -23,11 +23,7 @@
         <File Permission="660" Location="Kernel/cpan-lib/Perl/Tidy/IndentationItem.pm" />
         <File Permission="660" Location="Kernel/cpan-lib/Perl/Tidy/IOScalar.pm" />
         <File Permission="660" Location="Kernel/cpan-lib/Perl/Tidy/HtmlWriter.pm" />
-        <File Permission="660" Location="Kernel/cpan-lib/Perl/Tidy/LineSink.pm" />
-        <File Permission="660" Location="Kernel/cpan-lib/Perl/Tidy/LineBuffer.pm" />
-        <File Permission="660" Location="Kernel/cpan-lib/Perl/Tidy/DevNull.pm" />
         <File Permission="660" Location="Kernel/cpan-lib/Perl/Tidy/Diagnostics.pm" />
-        <File Permission="660" Location="Kernel/cpan-lib/Perl/Tidy/LineSource.pm" />
         <File Permission="660" Location="Kernel/cpan-lib/Perl/Tidy/Logger.pm" />
         <File Permission="660" Location="Kernel/cpan-lib/Perl/Tidy/VerticalAligner.pm" />
         <File Permission="660" Location="Kernel/cpan-lib/Perl/Tidy/Tokenizer.pm" />
