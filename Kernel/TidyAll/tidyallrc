@@ -8,6 +8,8 @@ ignore = Kernel/cpan-lib/**/* Custom/Kernel/cpan-lib/**/* local/lib/perl5/**/* l
 ignore = var/{article,log,run,sessions,spool,tmp,virtualfs}/**/*
 ; Ignore thirdparty content.
 ignore = **/thirdparty/**/*
+; Ignore minified files
+ignore = **/*.min.{css,js}
 ; Ignore Loader cache files.
 ignore = **/{js-cache,css-cache}/**/*
 ; Ignore test data files.
@@ -115,7 +117,6 @@ ignore = COPYING RELEASE CREDITS
 ignore = Kernel/Config.pm Kernel/Config/**/ZZZ*.pm Kernel/Config/Files/User/*.pm
 ignore = Kernel/WebApp.conf.dist
 ignore = scripts/auto_build/spec/templates/**/*
-ignore = scripts/test/sample/Loader/*.min.{css,js}
 ignore = scripts/test/sample/SysConfig/Migration/**/ZZZ*.pm
 ignore = scripts/DBUpdate{To6,}/TaskConfig/*.yml.dist
 ignore = var/httpd/htdocs/common/**/*.css
