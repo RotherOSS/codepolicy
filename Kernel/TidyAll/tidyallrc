@@ -15,13 +15,6 @@ ignore = **/{js-cache,css-cache}/**/*
 ; Ignore test data files.
 ignore = tmp/Test/**/*
 ;ignore = scripts/test/sample/**/*
-; Ignore vagrant instance contents of the CI provisioner.
-ignore = var/Vagrant/Instances/**/*
-; node.js packages
-ignore = node_modules/**/*
-ignore = Frontend/Vendor/**/*
-; Webpack generated output files
-ignore = var/public/dist/**/*
 ; ignore the CodePolicy that is used by the git commit hooks
 ignore = TidyAll/**/*
 
