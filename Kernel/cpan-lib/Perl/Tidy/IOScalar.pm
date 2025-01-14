@@ -10,7 +10,7 @@ package Perl::Tidy::IOScalar;
 use strict;
 use warnings;
 use Carp;
-our $VERSION = '20240511';
+our $VERSION = '20250105';
 
 use constant DEVEL_MODE   => 0;
 use constant EMPTY_STRING => q{};
@@ -47,7 +47,7 @@ sub DESTROY {
 
 sub new {
     my ( $package, $rscalar, $mode ) = @_;
-    my $ref = ref $rscalar;
+    my $ref = ref($rscalar);
     if ( $ref ne 'SCALAR' ) {
         confess <<EOM;
 ------------------------------------------------------------------------
@@ -94,8 +94,7 @@ EOM
     return $self->[0]->[$i];
 } ## end sub getline
 
-sub print    ## no critic (Subroutines::ProhibitBuiltinHomonyms)
-{
+sub print {
     my ( $self, $msg ) = @_;
     my $mode = $self->[1];
     if ( $mode ne 'w' ) {

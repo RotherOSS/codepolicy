@@ -8,11 +8,10 @@
 package Perl::Tidy::Logger;
 use strict;
 use warnings;
-our $VERSION = '20240511';
+our $VERSION = '20250105';
 use Carp;
 use English qw( -no_match_vars );
 
-use constant DEVEL_MODE   => 0;
 use constant EMPTY_STRING => q{};
 use constant SPACE        => q{ };
 
@@ -372,7 +371,7 @@ sub complain {
 
 sub warning {
 
-    my ( $self, $msg, $msg_line_number ) = @_;
+    my ( $self, $msg, ($msg_line_number) ) = @_;
 
     # Report errors to .ERR file (or stdout)
     # Given:
@@ -517,7 +516,7 @@ sub finish {
             my $routput_array = $self->{_output_array};
             foreach my $line ( @{$routput_array} ) { $fh->print($line) }
             if (   $fh->can('close')
-                && !ref($log_file) ne '-'
+                && !ref($log_file)
                 && $log_file ne '-' )
             {
                 $fh->close()

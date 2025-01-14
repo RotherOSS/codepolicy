@@ -16,7 +16,8 @@
 package Perl::Tidy::FileWriter;
 use strict;
 use warnings;
-our $VERSION = '20240511';
+our $VERSION = '20250105';
+use Carp;
 
 use constant DEVEL_MODE   => 0;
 use constant EMPTY_STRING => q{};
@@ -87,7 +88,7 @@ BEGIN {
 sub Die {
     my ($msg) = @_;
     Perl::Tidy::Die($msg);
-    return;
+    croak "unexpected return from Perl::Tidy::Die";
 }
 
 sub Fault {
@@ -97,9 +98,9 @@ sub Fault {
     # except if there has been a bug introduced by a recent program change.
     # Please add comments at calls to Fault to explain why the call
     # should not occur, and where to look to fix it.
-    my ( $package0, $filename0, $line0, $subroutine0 ) = caller(0);
-    my ( $package1, $filename1, $line1, $subroutine1 ) = caller(1);
-    my ( $package2, $filename2, $line2, $subroutine2 ) = caller(2);
+    my ( $package0_uu, $filename0_uu, $line0,    $subroutine0_uu ) = caller(0);
+    my ( $package1_uu, $filename1,    $line1,    $subroutine1 )    = caller(1);
+    my ( $package2_uu, $filename2_uu, $line2_uu, $subroutine2 )    = caller(2);
     my $pkg = __PACKAGE__;
 
     # Catch potential error of Fault not called as a method
@@ -126,8 +127,7 @@ $pkg reports VERSION='$VERSION'.
 ==============================================================================
 EOM
 
-    # This return is to keep Perl-Critic from complaining.
-    return;
+    croak "unexpected return from sub Die";
 } ## end sub Fault
 
 sub warning {
@@ -204,20 +204,25 @@ EOM
 sub setup_convergence_test {
     my ( $self, $rlist ) = @_;
 
-    # $rlist is a reference to a list of line-ending token indexes 'K' of
-    # the input stream. We will compare these with the line-ending token
-    # indexes of the output stream. If they are identical, then we have
-    # convergence.
+    # Setup the convergence test,
+
+    # Given:
+    #  $rlist = a reference to a list of line-ending token indexes 'K' of
+    #  the input stream. We will compare these with the line-ending token
+    #  indexes of the output stream. If they are identical, then we have
+    #  convergence.
     if ( @{$rlist} ) {
 
-        # We are going to destroy the list, so make a copy
-        # and put in reverse order so we can pop values
+        # We are going to destroy the list, so make a copy and put in
+        # reverse order so we can pop values as they arrive
         my @list = @{$rlist};
         if ( $list[0] < $list[-1] ) {
             @list = reverse @list;
         }
         $self->[_rK_checklist_] = \@list;
     }
+
+    # We will zero this flag on any error in arrival order:
     $self->[_K_arrival_order_matches_] = 1;
     $self->[_K_sequence_error_msg_]    = EMPTY_STRING;
     $self->[_K_last_arrival_]          = -1;
@@ -226,10 +231,13 @@ sub setup_convergence_test {
 
 sub get_convergence_check {
     my ($self) = @_;
-    my $rlist = $self->[_rK_checklist_];
 
-    # converged if all K arrived and in correct order
-    return $self->[_K_arrival_order_matches_] && !@{$rlist};
+    # converged if:
+    # - all expected indexes arrived
+    # - and in correct order
+    return !@{ $self->[_rK_checklist_] }
+      && $self->[_K_arrival_order_matches_];
+
 } ## end sub get_convergence_check
 
 sub get_output_line_number {
@@ -270,7 +278,9 @@ sub want_blank_line {
 sub require_blank_code_lines {
     my ( $self, $count ) = @_;
 
-    # write out the requested number of blanks regardless of the value of -mbl
+    # Given:
+    #   $count = number of blank lines to write
+    # Write out $count blank lines regardless of the value of -mbl
     # unless -mbl=0.  This allows extra blank lines to be written for subs and
     # packages even with the default -mbl=1
     my $need   = $count - $self->[_consecutive_blank_lines_];
@@ -283,7 +293,7 @@ sub require_blank_code_lines {
 } ## end sub require_blank_code_lines
 
 sub write_blank_code_line {
-    my ( $self, $forced ) = @_;
+    my ( $self, ($forced) ) = @_;
 
     # Write a blank line of code, given:
     #  $forced = optional flag which, if set, forces the blank line
@@ -394,6 +404,9 @@ sub write_line {
     # Write a line directly to the output, without any counting of blank or
     # non-blank lines.
 
+    # Given:
+    #   $str = line of text to write
+
     ${ $self->[_routput_string_] } .= $str;
 
     if ( chomp $str )              { $self->[_output_line_number_]++; }
@@ -405,7 +418,9 @@ sub write_line {
 sub check_line_lengths {
     my ( $self, $str ) = @_;
 
-    # collect info on line lengths for logfile
+    # Collect info on line lengths for logfile
+    # Given:
+    #   $str = line of text being written
 
     # This calculation of excess line length ignores any internal tabs
     my $rOpts = $self->[_rOpts_];

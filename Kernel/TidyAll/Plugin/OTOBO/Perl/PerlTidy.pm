@@ -31,14 +31,14 @@ extends qw(TidyAll::Plugin::OTOBO::Perl);
 use Capture::Tiny qw(capture_merged);
 
 # Require a recent version of Perl::Tidy for consistent formatting on all systems.
-use Perl::Tidy 20240511;
+use Perl::Tidy 20250105;
 
 # OTOBO modules
 
 # Force a certain version for uniformity
-if ( Perl::Tidy->VERSION() ne '20240511' ) {
+if ( Perl::Tidy->VERSION() ne '20250105' ) {
     my $Error = 'Newer versions of Perl::Tidy than 20240511 are currently not supported.';
-    $Error   .= ' Please use exactly that version (sudo cpanm Perl::Tidy@20240511).';
+    $Error   .= ' Please use exactly that version (sudo cpanm Perl::Tidy@20250105).';
     $Error   .= ' Your installed version is: ' . Perl::Tidy->VERSION() . ".\n";
 
     die $Error;
