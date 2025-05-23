@@ -2,10 +2,14 @@
 # Policies with a lower severity policies can be explicitly added below.
 severity = 4
 
-# This is for the case when the Perl::Community policies are installed
-# and not theme is specified. Many community policies have an alias name
-# with Freenode in the name. These policies would be checked twice.
-exclude = Freenode
+# This is for the case when the Perl::Bangs and the Perl::Community policies are installed
+# and no theme is specified. In that case the policies should not be checked. But developpers
+# are free to reenble them.
+#
+# Freedode is a special case. Many community policies have an alias name
+# with Freenode in the name. These policies would be checked twice when
+# Community rules are activated.
+exclude = Freenode Bangs Community
 
 # test scripts are scripts
 program-extensions = .pl .t
