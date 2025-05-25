@@ -16,9 +16,9 @@
 
 package TidyAll::Plugin::OTOBO::Base;
 
+use v5.24;
 use strict;
 use warnings;
-use v5.24;
 use utf8;
 
 use Moo;
@@ -37,11 +37,13 @@ sub IsPluginDisabled {
         die;
     }
 
-    my $Code = defined $Param{Code} ? $Param{Code} : $Self->_GetFileContents( $Param{Filename} );
+    my $Code = $Param{Code} // $Self->_GetFileContents( $Param{Filename} );
 
-    if ( $Code =~ m{nofilter\([^()]*\Q$PluginPackage\E[^()]*\)}ismx ) {
-        return 1;
-    }
+    # An example for a nofilter directive is:
+    #   ## nofilterDUMMY(TidyAll::Plugin::OTOBO::Perl::ParamObject)
+    # (Added a DUMMY so that the nofilter directive is not actually triggered)
+    # Such an directive may occur anywhere in the code.
+    return 1 if $Code =~ m{nofilter\([^()]*\Q$PluginPackage\E[^()]*\)}ismx;
 
     return;
 }
