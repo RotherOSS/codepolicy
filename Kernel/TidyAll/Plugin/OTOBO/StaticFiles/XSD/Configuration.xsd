@@ -5,7 +5,7 @@
     <xs:element name="otobo_config">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="Setting" type="SettingType" maxOccurs="unbounded" />
+                <xs:element name="Setting" type="SettingType" minOccurs="0" maxOccurs="unbounded" />
             </xs:sequence>
             <xs:attribute name="version" use="required" type="xs:string"/>
             <xs:attribute name="init" use="required">
