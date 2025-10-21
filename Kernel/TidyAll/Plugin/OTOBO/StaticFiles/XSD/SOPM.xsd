@@ -122,6 +122,10 @@
                 <xs:element ref="File" maxOccurs="unbounded" />
             </xs:sequence>
         </xs:complexType>
+        <xs:key name="unique-location">
+            <xs:selector xpath="File" />
+            <xs:field xpath="@Location" />
+        </xs:key>
     </xs:element>
 
     <xs:element name="File">
