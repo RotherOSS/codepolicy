@@ -53,7 +53,17 @@ sub validate_source {
         warnings
         threads
         lib
+
         v5.24
+        v5.26
+        v5.28
+        v5.30
+        v5.32
+        v5.34
+        v5.36
+        v5.38
+        v5.40
+        v5.42
 
         Archive::Tar
         Archive::Zip
