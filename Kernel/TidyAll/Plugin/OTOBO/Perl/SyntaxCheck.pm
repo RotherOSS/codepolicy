@@ -16,10 +16,11 @@
 
 package TidyAll::Plugin::OTOBO::Perl::SyntaxCheck;
 
+use v5.24;
 use strict;
 use warnings;
-use v5.24;
 use namespace::autoclean;
+use utf8;
 
 use Moo;
 
@@ -41,6 +42,10 @@ sub validate_source {
 
     # Allow important modules that come with the Perl core or are external
     #   dependencies of OTOBO and can thus be assumed as being installed.
+    #   Some common modules that are used during development are also not stripped.
+    #
+    # Note that this is not fool proof. Modules like DateTime::TimeZone::ICal would
+    # also not be stripped as the that module name contains the substring 'DateTime'.
     my @AllowedExternalModules = qw(
         vars
         constant
@@ -99,9 +104,9 @@ sub validate_source {
 
     # say STDERR $CleanedSource;
 
-    my $TempFile = File::Temp->new();
+    my $TempFile = File::Temp->new;
     print $TempFile $CleanedSource;
-    $TempFile->flush();
+    $TempFile->flush;
 
     # syntax check
     my $ErrorMessage;
