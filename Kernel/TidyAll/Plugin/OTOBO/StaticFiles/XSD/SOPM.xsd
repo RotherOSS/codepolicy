@@ -130,13 +130,9 @@
 
     <xs:element name="File">
         <xs:complexType>
-            <xs:simpleContent>
-                <xs:extension base="xs:string">
-                    <xs:attribute name="Location" use="required" type="xs:token"/>
-                    <xs:attribute name="Permission" use="required" type="xs:token"/>
-                    <xs:attribute name="Encode" use="optional" type="xs:token"/>
-                </xs:extension>
-            </xs:simpleContent>
+            <xs:attribute name="Permission" use="required" type="xs:token"/>
+            <xs:attribute name="Location" use="required" type="xs:token"/>
+            <xs:attribute name="Encode" use="optional" type="xs:token"/>
         </xs:complexType>
     </xs:element>
 
