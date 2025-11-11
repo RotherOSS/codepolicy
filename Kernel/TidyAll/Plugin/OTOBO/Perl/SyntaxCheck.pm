@@ -38,6 +38,10 @@ sub validate_source {
 
     return if $Self->IsPluginDisabled( Code => $Code );
 
+    # Simple compile checks very often fail because required modules are not available.
+    # But installed modules are not the scope of this test, therefore we remove many
+    # of the 'use' statement. But keep some modules and pragmata because removing them
+    # would have an adverse effect.
     my ( $CleanedSource, $DeletableStatement );
 
     # Allow important modules that come with the Perl core or are external
@@ -93,7 +97,7 @@ sub validate_source {
     LINE:
     for my $Line ( split( /\n/, $Code ) ) {
 
-        # We'll skip all use *; statements exept for core modules because the modules cannot be found at runtime.
+        # We'll skip all use *; statements exept for excempted modules
         if ( $Line =~ m{ \A \s* use \s+ }xms && $Line !~ m{$AllowedExternalModulesRegex}xms ) {
             $DeletableStatement = 1;
         }
@@ -111,8 +115,6 @@ sub validate_source {
 
         $CleanedSource .= $Line . "\n";
     }
-
-    # say STDERR $CleanedSource;
 
     my $TempFile = File::Temp->new;
     print $TempFile $CleanedSource;
