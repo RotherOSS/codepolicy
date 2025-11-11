@@ -100,7 +100,7 @@ sub validate_source {
 
         # Check for 'use VERSION' declarations like 'use v5.42'. Avoid requiring a version higher
         # than the minimal supported version.
-        my $MinimalSupportedVersion = '5.24';
+        my $MinimalSupportedVersion = '5.26';
         if ( my ($RequiredVersion) = $Line =~ m{ \A \s* use \s+ v(5.\d\d) }xms ) {
             if ( $RequiredVersion gt $MinimalSupportedVersion ) {
                 return $Self->DieWithError("Perl $RequiredVersion is required but $MinimalSupportedVersion is the minimal supported version\n");
