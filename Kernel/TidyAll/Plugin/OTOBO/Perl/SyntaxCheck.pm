@@ -90,7 +90,16 @@ sub validate_source {
     my $AllowedExternalModulesRegex = '\A \s* use \s+ (?: ' . join( '|', @AllowedExternalModules ) . ' ) ';
 
     LINE:
-    for my $Line ( split( /\n/, $Code ) ) {
+    for my $Line ( split /\n/, $Code ) {
+
+        # Check for 'use VERSION' declarations like 'use v5.42'. Avoid requiring a version higher
+        # than the minimal supported version.
+        my $MinimalSupportedVersion = '5.24';
+        if ( my ($RequiredVersion) = $Line =~ m{ \A \s* use \s+ v(5.\d\d) }xms ) {
+            if ( $RequiredVersion gt $MinimalSupportedVersion ) {
+                return $Self->DieWithError("Perl $RequiredVersion is required but $MinimalSupportedVersion is the minimal supported version\n");
+            }
+        }
 
         # We'll skip all use *; statements exept for excempted modules
         if ( $Line =~ m{ \A \s* use \s+ }xms && $Line !~ m{$AllowedExternalModulesRegex}xms ) {
