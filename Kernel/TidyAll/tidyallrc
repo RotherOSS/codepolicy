@@ -91,10 +91,10 @@ ignore = **/test/*
 [+TidyAll::Plugin::OTOBO::JavaScript::FileNameUnitTest]
 select = var/httpd/htdocs/js/test/*.js
 
-;[+TidyAll::Plugin::OTOBO::JavaScript::ESLint]
-;select = **/*.{js,vue}
-;ignore = scripts/test/sample/Loader/**/*
-;; Ignore this slow plugin for more agile OTOBOCodePolicy filter development with a custom mode "fast".
+[+TidyAll::Plugin::OTOBO::JavaScript::ESLint]
+select = **/*.{js}
+ignore = scripts/test/sample/Loader/**/*
+; Ignore this slow plugin for more agile OTOBOCodePolicy filter development with a custom mode "fast".
 ;except_modes = fast
 
 ;

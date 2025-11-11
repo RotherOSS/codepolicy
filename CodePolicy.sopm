@@ -50,11 +50,12 @@
         <File Permission="660" Location="Kernel/TidyAll/Plugin/OTOBO/Cron/CronScripts.pm" />
         <File Permission="660" Location="Kernel/TidyAll/Plugin/OTOBO/JavaScript/DebugCode.pm" />
         <File Permission="660" Location="Kernel/TidyAll/Plugin/OTOBO/JavaScript/ESLint.pm" />
+        <File Permission="660" Location="Kernel/TidyAll/Plugin/OTOBO/JavaScript/ESLint/eslint.config.mjs" />
         <File Permission="660" Location="Kernel/TidyAll/Plugin/OTOBO/JavaScript/ESLint/frontend.eslintrc.7.js" />
         <File Permission="660" Location="Kernel/TidyAll/Plugin/OTOBO/JavaScript/ESLint/frontend.eslintrc.js" />
         <File Permission="660" Location="Kernel/TidyAll/Plugin/OTOBO/JavaScript/ESLint/legacy.eslintrc.js" />
         <File Permission="660" Location="Kernel/TidyAll/Plugin/OTOBO/JavaScript/ESLint/webpack.eslintrc.js" />
-        <File Permission="660" Location="Kernel/TidyAll/Plugin/OTOBO/JavaScript/ESLint/Rules/no-window.js" />
+        <File Permission="660" Location="Kernel/TidyAll/Plugin/OTOBO/JavaScript/ESLint/Rules/no-window.mjs" />
         <File Permission="660" Location="Kernel/TidyAll/Plugin/OTOBO/JavaScript/FileName.pm" />
         <File Permission="660" Location="Kernel/TidyAll/Plugin/OTOBO/JavaScript/FileNameUnitTest.pm" />
         <File Permission="660" Location="Kernel/TidyAll/Plugin/OTOBO/JavaScript/UnloadEvent.pm" />
