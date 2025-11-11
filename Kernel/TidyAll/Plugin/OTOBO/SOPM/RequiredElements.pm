@@ -31,8 +31,16 @@ sub transform_source {
     # Replace OTOBO GmbH with Rother OSS GmbH
     $Code =~ s{ OTOBO [ ]+ GmbH }{Rother OSS GmbH}xmsg;
 
+    # get vendor
+    my $Vendor = '';
+    if ( $Code =~ /<Vendor>(?<Vendor>[^<>]+)<\/Vendor>/ ) {
+        $Vendor = $+{Vendor};
+    }
+
     # Replace <URL>http://otobo.org/</URL> with <URL>https://otobo.org/</URL>
-    $Code =~ s{ ^ ( \s* ) \< URL \> .+? \< \/ URL \> }{$1<URL>https://otobo.io/</URL>}xmsg;
+    if ( $Vendor eq 'Rother OSS GmbH' ) {
+        $Code =~ s{ ^ ( \s* ) \< URL \> .+? \< \/ URL \> }{$1<URL>https://otobo.io/</URL>}xmsg;
+    }
 
     # Replace Version
     $Code =~ s{ <Version> [^<>\n]* <\/Version> }{<Version>0.0.0</Version>}xmsg;
