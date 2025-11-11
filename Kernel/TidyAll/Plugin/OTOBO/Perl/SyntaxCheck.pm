@@ -50,6 +50,10 @@ sub validate_source {
     #
     # Note that this is not fool proof. Modules like DateTime::TimeZone::ICal would
     # also not be stripped as the that module name contains the substring 'DateTime'.
+    #
+    # The 'use v5.xx' lines are also kept in the file. This is fine as there is a Perl::Critic
+    # policy that enforces that no version of Perl higher than the minimal supported version
+    # is required.
     my @AllowedExternalModules = qw(
         vars
         constant
@@ -58,16 +62,7 @@ sub validate_source {
         threads
         lib
 
-        v5.24
-        v5.26
-        v5.28
-        v5.30
-        v5.32
-        v5.34
-        v5.36
-        v5.38
-        v5.40
-        v5.42
+        v5.\d\d
 
         Archive::Tar
         Archive::Zip
