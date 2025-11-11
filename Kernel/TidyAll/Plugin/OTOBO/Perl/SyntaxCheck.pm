@@ -38,6 +38,10 @@ sub validate_source {
 
     return if $Self->IsPluginDisabled( Code => $Code );
 
+    # Simple compile checks very often fail because required modules are not available.
+    # But installed modules are not the scope of this test, therefore we remove many
+    # of the 'use' statement. But keep some modules and pragmata because removing them
+    # would have an adverse effect.
     my ( $CleanedSource, $DeletableStatement );
 
     # Allow important modules that come with the Perl core or are external
@@ -46,6 +50,10 @@ sub validate_source {
     #
     # Note that this is not fool proof. Modules like DateTime::TimeZone::ICal would
     # also not be stripped as the that module name contains the substring 'DateTime'.
+    #
+    # The 'use v5.xx' lines are also kept in the file. This is fine as there is a Perl::Critic
+    # policy that enforces that no version of Perl higher than the minimal supported version
+    # is required.
     my @AllowedExternalModules = qw(
         vars
         constant
@@ -54,16 +62,7 @@ sub validate_source {
         threads
         lib
 
-        v5.24
-        v5.26
-        v5.28
-        v5.30
-        v5.32
-        v5.34
-        v5.36
-        v5.38
-        v5.40
-        v5.42
+        v5.\d\d
 
         Archive::Tar
         Archive::Zip
@@ -91,9 +90,18 @@ sub validate_source {
     my $AllowedExternalModulesRegex = '\A \s* use \s+ (?: ' . join( '|', @AllowedExternalModules ) . ' ) ';
 
     LINE:
-    for my $Line ( split( /\n/, $Code ) ) {
+    for my $Line ( split /\n/, $Code ) {
 
-        # We'll skip all use *; statements exept for core modules because the modules cannot be found at runtime.
+        # Check for 'use VERSION' declarations like 'use v5.42'. Avoid requiring a version higher
+        # than the minimal supported version.
+        my $MinimalSupportedVersion = '5.24';
+        if ( my ($RequiredVersion) = $Line =~ m{ \A \s* use \s+ v(5.\d\d) }xms ) {
+            if ( $RequiredVersion gt $MinimalSupportedVersion ) {
+                return $Self->DieWithError("Perl $RequiredVersion is required but $MinimalSupportedVersion is the minimal supported version\n");
+            }
+        }
+
+        # We'll skip all use *; statements exept for excempted modules
         if ( $Line =~ m{ \A \s* use \s+ }xms && $Line !~ m{$AllowedExternalModulesRegex}xms ) {
             $DeletableStatement = 1;
         }
@@ -111,8 +119,6 @@ sub validate_source {
 
         $CleanedSource .= $Line . "\n";
     }
-
-    # say STDERR $CleanedSource;
 
     my $TempFile = File::Temp->new;
     print $TempFile $CleanedSource;
