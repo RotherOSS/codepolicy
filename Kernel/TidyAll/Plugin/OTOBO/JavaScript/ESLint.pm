@@ -27,49 +27,48 @@ use Moo;
 
 extends qw(TidyAll::Plugin::OTOBO::Base);
 
-our $NodePath;
-our $ESLintPath;
+our $NpxPath;
 
 sub transform_file {
     my ( $Self, $Filename ) = @_;
 
     return if $Self->IsPluginDisabled( Filename => $Filename );
 
-    if ( !$ESLintPath ) {
+    my $ESLintConfigPath = __FILE__;
+    $ESLintConfigPath =~ s{ESLint\.pm}{ESLint/eslint.config.mjs};
 
-        # On some systems (Ubuntu) nodejs is called /usr/bin/nodejs instead of /usr/bin/node,
-        #   which can lead to problems with calling the node scripts directly. Therefore we
-        #   determine the nodejs binary and call it directly.
-        $NodePath = `which nodejs 2>/dev/null` || `which node 2>/dev/null`;
-        chomp $NodePath;
-        if ( !$NodePath ) {
-            die "Error: could not find the 'nodejs' binary.\n";
+    my $CodepolicyBasePath = $ESLintConfigPath;
+    $CodepolicyBasePath =~ s/Kernel(?!.*Kernel).*//s;
+
+    if ( !$NpxPath ) {
+
+        # check availability of npx
+        $NpxPath = `cd $CodepolicyBasePath ; which npx 2>/dev/null`;
+        chomp $NpxPath;
+        if ( !$NpxPath ) {
+            die "Error: could not find npx command.\n";
         }
 
-        $ESLintPath = `which eslint 2>/dev/null`;
-        chomp $ESLintPath;
-        if ( !$ESLintPath ) {
-            die "Error: could not find the 'eslint' script.\n";
+        # check if eslint is available via npx
+        # (necessary workaround is checking if a no-install version check returns a sane value)
+        my $TestVersion = `cd $CodepolicyBasePath ; $NpxPath --no-install eslint -v 2>/dev/null`;
+        chomp $TestVersion;
+        if ( $TestVersion !~ m{v?\d+\.\d+\.\d+} ) {
+            die "Error: could not find eslint. ($TestVersion)\n";
         }
 
         # Force the minimum version of eslint.
-        my $ESLintVersion = `$NodePath $ESLintPath -v`;
+        my $ESLintVersion = `cd $CodepolicyBasePath ; $NpxPath eslint -v`;
         chomp $ESLintVersion;
         my ( $Major, $Minor, $Patch ) = $ESLintVersion =~ m{v(\d+)[.](\d+)[.](\d+)};
         my $Compare = sprintf( "%03d%03d%03d", $Major, $Minor, $Patch );
         if ( !length($Major) || $Compare < 9_000_000 ) {
-            undef $ESLintPath;    # Make sure to re-issue this error for future files.
             die "Error: your eslint version ($ESLintVersion) is outdated.\n";
         }
     }
 
-    my $ESLintConfigPath = __FILE__;
-    $ESLintConfigPath =~ s{ESLint\.pm}{ESLint/eslint.config.mjs};
-
     # create file symlink or copy to prevent eslint 9.x error "File ignored because outside of base path"
-    my $TmpFilePath = $ESLintConfigPath;
-    $TmpFilePath =~ s{/[^/]+$}{};
-    $TmpFilePath .= "/tmp/";
+    my $TmpFilePath = $CodepolicyBasePath . "/tmp/";
     make_path($TmpFilePath, {error => \my $err});
     if ($err && @$err) {
         die "Can't create temporary directory at $TmpFilePath \n Error: " . join(", ", @$err) . "\n ";
@@ -80,8 +79,8 @@ sub transform_file {
         or die "Can't create symlink or copy of $Filename at $TmpFilePath";
 
     my $Command = sprintf(
-        "%s %s -c %s --fix %s",
-        $NodePath, $ESLintPath, $ESLintConfigPath, $TmpFilePath
+        "cd %s ; %s eslint -c %s --fix %s",
+        $CodepolicyBasePath, $NpxPath, $ESLintConfigPath, $TmpFilePath
     );
 
     my $Output = `$Command`;
