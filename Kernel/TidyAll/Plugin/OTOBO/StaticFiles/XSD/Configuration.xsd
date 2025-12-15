@@ -50,8 +50,8 @@
             </xs:simpleType>
         </xs:attribute>
 
-        <xs:attribute name="Valid"                    use="required" type="BooleanAttribute"/>
         <xs:attribute name="Required"                 use="required" type="BooleanAttribute" />
+        <xs:attribute name="Valid"                    use="required" type="BooleanAttribute"/>
         <xs:attribute name="ReadOnly"                 use="optional" type="BooleanAttribute" />
         <xs:attribute name="Invisible"                use="optional" type="BooleanAttribute" />
         <xs:attribute name="UserModificationPossible" use="optional" type="BooleanAttribute" />
