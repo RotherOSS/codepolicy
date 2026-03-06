@@ -80,6 +80,7 @@ sub validate_source {
         File::Basename
         FindBin
         IO::Socket
+        List::AllUtils
         List::Util
         Moo
         Moose
