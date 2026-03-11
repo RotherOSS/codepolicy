@@ -3,7 +3,7 @@
 # OTOBO is a web-based ticketing system for service organisations.
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2019-2025 Rother OSS GmbH, https://otobo.io/
+# Copyright (C) 2019-2026 Rother OSS GmbH, https://otobo.io/
 # --
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -18,13 +18,23 @@
 use strict;
 use warnings;
 
+# core modules
 use File::Basename;
 use FindBin qw($RealBin);
+use Getopt::Long qw(GetOptions);
+
+# CPAN modules
+
+# OTOBO modules
+
 use lib dirname($RealBin) . '/../../';
 use lib dirname($RealBin) . '/../../Kernel/';    # find TidyAll
 use lib dirname($RealBin) . '/../../Kernel/cpan-lib';
 
 use TidyAll::OTOBO::Git::PreReceive;
 
+my $Input = '';
+GetOptions( 'input=s' => \$Input );
+
 my $PreReceive = TidyAll::OTOBO::Git::PreReceive->new();
-$PreReceive->Run();
+$PreReceive->Run( Input => $Input );
