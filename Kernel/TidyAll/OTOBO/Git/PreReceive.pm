@@ -29,7 +29,7 @@ and returns a corresponding status code.
 
 use Cwd;
 use File::Spec;
-use Fle::Basename;
+use File::Basename;
 
 use Code::TidyAll;
 use IPC::System::Simple qw(capturex run);
