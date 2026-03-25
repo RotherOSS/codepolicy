@@ -2,7 +2,7 @@
 # OTOBO is a web-based ticketing system for service organisations.
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2019-2025 Rother OSS GmbH, https://otobo.io/
+# Copyright (C) 2019-2026 Rother OSS GmbH, https://otobo.io/
 # --
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -39,38 +39,7 @@ use Moo;
 
 # Ignore these repositories on the server so that we can always push to them.
 my %IgnoreRepositories = (
-    'otobocodepolicy.git' => 1,
-
-    # auto-generated documentation
-    'otobo-github-io.git' => 1,    # deprecated
-    'doc-otobo-com.git'   => 1,
-
-    # documentation toolchain
-    'docbuild.git' => 1,
-
-    # Thirdparty code
-    'bugs-otobo-org.git' => 1,
-
-    # OTOBO Blog
-    'blog-otobo-com.git' => 1,
-
-    # OTOBO Blog
-    'www-otobo-com.git' => 1,
-
-    # OTOBOTube
-    'clips-otobo-com.git' => 1,
-
-    # Internal UX/UI team repository
-    'ux-ui.git' => 1,
-
-    # Streamline icons repository
-    'streamline-icons.git' => 1,
-
-    # CKEditor 5 custom build repository
-    'ckeditor5-build-inline-otobo.git' => 1,
-
-    # OTOBO Mobile App repository
-    'otobo-mobile-app.git' => 1,
+    'codepolicy.git' => 1,
 );
 
 sub Run {
@@ -106,7 +75,7 @@ sub Run {
     };
     if ($ErrorMessage) {
         print STDERR "$ErrorMessage\n";
-        print STDERR "*** Push was rejected. Please fix the errors and try again. ***\n";
+        print STDERR "\n*** Push contains files which do not satisfy the CodePolicy! ***\n";
         exit 1;
     }
 }
