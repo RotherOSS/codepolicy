@@ -1,19 +1,21 @@
--l=160          # line length
--vmll           # variable maximum line length
--i=4            # indentation width
--ci=4           # continuous indentation width
--xci            # extended continuous indentation
--vt=0           # vertical tightness
--vtc=0          # vertical tightness closing
--cti=0          # closing token indentation
--pt=1           # paren tightness
--bt=1           # brace tightness
--sbt=1          # square brackets tightness
--bbt=1          # block brace tightness
--nsfs           # no space for semicolon
--nolq           # no outdent long quotes
--bbao           # break before all operators
--nola           # no outdent labels
--ndnl           # no delete old newlines
--cab=0          # comma arrow breakpoints
+-l=160                          # line length
+-vmll                           # variable maximum line length
+-i=4                            # indentation width
+-ci=4                           # continuous indentation width
+-xci                            # extended continuous indentation
+-vt=0                           # vertical tightness
+-vtc=0                          # vertical tightness closing
+-cti=0                          # closing token indentation
+-pt=1                           # paren tightness
+-bt=1                           # brace tightness
+-sbt=1                          # square brackets tightness
+-bbt=1                          # block brace tightness
+-nsfs                           # no space for semicolon
+-nolq                           # no outdent long quotes
+-bbao                           # break before all operators
+-nola                           # no outdent labels
+-ndnl                           # no delete old newlines
+-cab=0                          # comma arrow breakpoints
+-sbcp="^# (Rother OSS|EO)"      # treat patterns "# Rother OSS" and "# EO" (package markers) as static block comments
+                                #   see section 'Static Block Comments' in perltidy documentation for more info
 --character-encoding=none
