@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2019-2024 Rother OSS GmbH, https://otobo.io/
-# This file is distributed under the same license as the OTOBO Installation Guide package.
+# Copyright (C) 2019–2026 Rother OSS GmbH, https://otobo.io
+# This file is distributed under the same license as the OTOBO Documentation package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: OTOBO Installation Guide rel-11.0\n"
+"Project-Id-Version: OTOBO Documentation dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-22 03:50+0200\n"
+"POT-Creation-Date: 2026-04-07 13:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,76 +16,75 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../content/index.rst:20
-msgid "Sacrifice to Sphinx"
+#: ../content/index.rst:5
+msgid "Contents"
 msgstr ""
 
-#: ../../content/index.rst:23
+#: ../content/index.rst:10
 msgid "Description"
 msgstr ""
 
-#: ../../content/index.rst:24
+#: ../content/index.rst:11
 msgid "OTOBO code quality checks."
 msgstr ""
 
-#: ../../content/index.rst:27
+#: ../content/index.rst:14
 msgid "System requirements"
 msgstr ""
 
-#: ../../content/index.rst:30
+#: ../content/index.rst:17
 msgid "Framework"
 msgstr ""
 
-#: ../../content/index.rst:31
+#: ../content/index.rst:18
 msgid "OTOBO 10.1.x"
 msgstr ""
 
-#: ../../content/index.rst:34
+#: ../content/index.rst:21
 msgid "Packages"
 msgstr ""
 
-#: ../../content/index.rst:35
-#: ../../content/index.rst:39
+#: ../content/index.rst:22
+#: ../content/index.rst:26
 msgid "\\-"
 msgstr ""
 
-#: ../../content/index.rst:38
+#: ../content/index.rst:25
 msgid "Third-party software"
 msgstr ""
 
-#: ../../content/index.rst:42
+#: ../content/index.rst:29
 msgid "Usage"
 msgstr ""
 
-#: ../../content/index.rst:45
+#: ../content/index.rst:32
 msgid "Setup"
 msgstr ""
 
-#: ../../content/index.rst:48
+#: ../content/index.rst:35
 msgid "About"
 msgstr ""
 
-#: ../../content/index.rst:51
+#: ../content/index.rst:38
 msgid "Contact"
 msgstr ""
 
-#: ../../content/index.rst:52
+#: ../content/index.rst:39
 msgid "Rother OSS GmbH"
 msgstr ""
 
-#: ../../content/index.rst:53
+#: ../content/index.rst:40
 msgid "Email: hello@otobo.de"
 msgstr ""
 
-#: ../../content/index.rst:54
+#: ../content/index.rst:41
 msgid "Web: https://otobo.io"
 msgstr ""
 
-#: ../../content/index.rst:57
+#: ../content/index.rst:44
 msgid "Version"
 msgstr ""
 
-#: ../../content/index.rst:58
+#: ../content/index.rst:45
 msgid "Author: |doc-vendor| / Version: |doc-version| / Date of release: |doc-datestamp|"
 msgstr ""
-
