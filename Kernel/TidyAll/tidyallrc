@@ -8,6 +8,7 @@ ignore = Kernel/cpan-lib/**/* Custom/Kernel/cpan-lib/**/* local/lib/perl5/**/* l
 ignore = var/{article,log,run,sessions,spool,tmp,virtualfs}/**/*
 ; Ignore thirdparty content.
 ignore = **/thirdparty/**/*
+ignore = **/ckeditor*.css
 ; Ignore minified files
 ignore = **/*.min.{css,js}
 ; Ignore Loader cache files.
