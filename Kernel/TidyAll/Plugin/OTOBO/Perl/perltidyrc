@@ -18,4 +18,4 @@
 -cab=0                          # comma arrow breakpoints
 -sbcp="^# (Rother OSS|EO)"      # treat patterns "# Rother OSS" and "# EO" (package markers) as static block comments
                                 #   see section 'Static Block Comments' in perltidy documentation for more info
---character-encoding=none
+--character-encoding=utf8       # inform PerlTidy that the input is UTF-8, reject invalid UTF-8 e.g. German umlauts in latin1
