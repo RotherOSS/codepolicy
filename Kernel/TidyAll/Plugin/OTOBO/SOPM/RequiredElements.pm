@@ -174,6 +174,11 @@ sub validate_source {
         }
     }
 
+    # check for multi-line english description
+    if ( $Code =~ /<Description Lang="en">.+?<\/Description>/s ) {
+        $DescriptionEN = 1;
+    }
+
     if ($Table) {
         $ErrorMessage
             .= "The Element <Table> is not allowed in sopm-files. Perhaps you mean <TableCreate>!\n";
