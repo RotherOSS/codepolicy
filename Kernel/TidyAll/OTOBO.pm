@@ -2,7 +2,7 @@
 # OTOBO is a web-based ticketing system for service organisations.
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2019-2025 Rother OSS GmbH, https://otobo.io/
+# Copyright (C) 2019-2026 Rother OSS GmbH, https://otobo.io/
 # --
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -38,6 +38,7 @@ use Time::HiRes qw(sleep);
 
 # CPAN modules, Require some needed modules here for clarity / better error messages.
 use Code::TidyAll 0.56;
+use IO::Interactive qw(is_interactive);
 use Perl::Critic;
 use Perl::Tidy;
 
@@ -369,7 +370,9 @@ stays unchanged.
 sub _Color {
     my ( $Color, $Text ) = @_;
 
-    return $Text if $ENV{OTOBOCODEPOLICY_NOCOLOR};
+    my $Coloring = ( is_interactive() && !$ENV{OTOBOCODEPOLICY_NOCOLOR} );
+
+    return $Text unless $Coloring;
 
     return Term::ANSIColor::color($Color) . $Text . Term::ANSIColor::color('reset');
 }
