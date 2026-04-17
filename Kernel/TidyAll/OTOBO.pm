@@ -38,7 +38,6 @@ use Time::HiRes qw(sleep);
 
 # CPAN modules, Require some needed modules here for clarity / better error messages.
 use Code::TidyAll 0.56;
-use IO::Interactive qw(is_interactive);
 use Perl::Critic;
 use Perl::Tidy;
 
@@ -49,7 +48,7 @@ our @FileList              = ();    # all files in current repository
 
 # handle coloring
 #   environment variable ANSI_COLORS_DISABLED is used by Term::ANSIColor
-if ( !is_interactive() || $ENV{OTOBOCODEPOLICY_NOCOLOR} ) {
+if ( !(-t STDOUT) || $ENV{OTOBOCODEPOLICY_NOCOLOR} ) {
     $ENV{ANSI_COLORS_DISABLED} = 1;
 }
 
