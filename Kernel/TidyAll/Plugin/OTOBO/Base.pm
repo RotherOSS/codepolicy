@@ -27,7 +27,6 @@ extends qw(Code::TidyAll::Plugin);
 
 use TidyAll::OTOBO;
 
-use IO::Interactive qw(is_interactive);
 use Term::ANSIColor qw(colored);
 
 sub IsPluginDisabled {
