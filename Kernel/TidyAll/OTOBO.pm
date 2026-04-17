@@ -2,7 +2,7 @@
 # OTOBO is a web-based ticketing system for service organisations.
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2019-2025 Rother OSS GmbH, https://otobo.io/
+# Copyright (C) 2019-2026 Rother OSS GmbH, https://otobo.io/
 # --
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -33,11 +33,12 @@ use File::Basename;
 use File::Temp ();
 use IO::File;
 use POSIX ":sys_wait_h";
-use Term::ANSIColor();
+use Term::ANSIColor qw(colored);
 use Time::HiRes qw(sleep);
 
 # CPAN modules, Require some needed modules here for clarity / better error messages.
 use Code::TidyAll 0.56;
+use IO::Interactive qw(is_interactive);
 use Perl::Critic;
 use Perl::Tidy;
 
@@ -45,6 +46,12 @@ our $FrameworkVersionMajor = 0;
 our $FrameworkVersionMinor = 0;
 our $ThirdpartyModule      = 0;
 our @FileList              = ();    # all files in current repository
+
+# handle coloring
+#   environment variable ANSI_COLORS_DISABLED is used by Term::ANSIColor
+if ( !is_interactive() || $ENV{OTOBOCODEPOLICY_NOCOLOR} ) {
+    $ENV{ANSI_COLORS_DISABLED} = 1;
+}
 
 sub new_from_conf_file {
     my ( $Class, $ConfigFile, %Param ) = @_;
@@ -352,26 +359,9 @@ sub _ReplaceColorTags {
 
     $Text //= '';
 
-    $Text =~ s{<(green|yellow|red)>(.*?)</\1>}{_Color($1, $2)}gsmxe;
+    $Text =~ s{<(green|yellow|red)>(.*?)</\1>}{colored($2, $1)}gsmxe;
 
     return $Text;
-}
-
-=head2 _Color()
-
-This will color the given text (see Term::ANSIColor::color()) if ANSI output is available and active, otherwise the text
-stays unchanged.
-
-    my $PossiblyColoredText = _Color('green', $Text);
-
-=cut
-
-sub _Color {
-    my ( $Color, $Text ) = @_;
-
-    return $Text if $ENV{OTOBOCODEPOLICY_NOCOLOR};
-
-    return Term::ANSIColor::color($Color) . $Text . Term::ANSIColor::color('reset');
 }
 
 1;
