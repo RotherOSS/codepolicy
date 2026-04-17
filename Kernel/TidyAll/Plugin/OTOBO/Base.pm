@@ -2,7 +2,7 @@
 # OTOBO is a web-based ticketing system for service organisations.
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2019-2025 Rother OSS GmbH, https://otobo.io/
+# Copyright (C) 2019-2026 Rother OSS GmbH, https://otobo.io/
 # --
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -26,6 +26,8 @@ use Moo;
 extends qw(Code::TidyAll::Plugin);
 
 use TidyAll::OTOBO;
+
+use Term::ANSIColor qw(colored);
 
 sub IsPluginDisabled {
     my ( $Self, %Param ) = @_;
@@ -73,36 +75,13 @@ sub DieWithError {
 
     chomp $Error;
 
-    die _Color( 'yellow', ref($Self) ) . "\n" . _Color( 'red', $Error ) . "\n";
-}
-
-=head2 _Color()
-
-This will color the given text (see Term::ANSIColor::color()) if ANSI output is available and active, otherwise the text
-stays unchanged.
-
-    my $PossiblyColoredText = _Color('green', $Text);
-
-=cut
-
-sub _Color {
-    my ( $Color, $Text ) = @_;
-
-    return $Text if $ENV{OTOBOCODEPOLICY_NOCOLOR};
-
-    return Term::ANSIColor::color($Color) . $Text . Term::ANSIColor::color('reset');
+    die colored( ref($Self), 'yellow' ) . "\n" . colored( $Error, 'red' ) . "\n";
 }
 
 sub _GetFileContents {
     my ( $Self, $Filename ) = @_;
 
     open( my $FileHandle, '<', $Filename ) || die "Can't open $Filename\n";    ## no critic qw(OTOBO::ProhibitOpen)
-
-    #    my $FileHandle;
-    #    if ( !open $FileHandle, '<', $Filename ) {    ## no critic qw(OTOBO::ProhibitOpen)
-    #        print STDERR "Can't open $Filename\n";
-    #        die;
-    #    }
 
     my $Content = do { local $/ = undef; <$FileHandle> };
     close $FileHandle;
