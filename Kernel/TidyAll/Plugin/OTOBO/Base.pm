@@ -28,6 +28,7 @@ extends qw(Code::TidyAll::Plugin);
 use TidyAll::OTOBO;
 
 use IO::Interactive qw(is_interactive);
+use Term::ANSIColor qw(colored);
 
 sub IsPluginDisabled {
     my ( $Self, %Param ) = @_;
@@ -73,26 +74,7 @@ sub DieWithError {
 
     chomp $Error;
 
-    die _Color( 'yellow', ref($Self) ) . "\n" . _Color( 'red', $Error ) . "\n";
-}
-
-=head2 _Color()
-
-This will color the given text (see Term::ANSIColor::color()) if ANSI output is available and active, otherwise the text
-stays unchanged.
-
-    my $PossiblyColoredText = _Color('green', $Text);
-
-=cut
-
-sub _Color {
-    my ( $Color, $Text ) = @_;
-
-    my $Coloring = ( is_interactive() && !$ENV{OTOBOCODEPOLICY_NOCOLOR} );
-
-    return $Text unless $Coloring;
-
-    return Term::ANSIColor::color($Color) . $Text . Term::ANSIColor::color('reset');
+    die colored( ref($Self), 'yellow' ) . "\n" . colored( $Error, 'red' ) . "\n";
 }
 
 sub _GetFileContents {

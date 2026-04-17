@@ -33,7 +33,7 @@ use File::Basename;
 use File::Temp ();
 use IO::File;
 use POSIX ":sys_wait_h";
-use Term::ANSIColor();
+use Term::ANSIColor qw(colored);
 use Time::HiRes qw(sleep);
 
 # CPAN modules, Require some needed modules here for clarity / better error messages.
@@ -56,6 +56,10 @@ sub new_from_conf_file {
         no_cache   => 1,
         no_backups => 1,
     );
+
+    if ( !is_interactive() || $ENV{OTOBOCODEPOLICY_NOCOLOR} ) {
+        $ENV{ANSI_COLORS_DISABLED} = 1;
+    }
 
     # Reset when a new object is created
     $FrameworkVersionMajor = 0;
@@ -353,28 +357,9 @@ sub _ReplaceColorTags {
 
     $Text //= '';
 
-    $Text =~ s{<(green|yellow|red)>(.*?)</\1>}{_Color($1, $2)}gsmxe;
+    $Text =~ s{<(green|yellow|red)>(.*?)</\1>}{colored($2, $1)}gsmxe;
 
     return $Text;
-}
-
-=head2 _Color()
-
-This will color the given text (see Term::ANSIColor::color()) if ANSI output is available and active, otherwise the text
-stays unchanged.
-
-    my $PossiblyColoredText = _Color('green', $Text);
-
-=cut
-
-sub _Color {
-    my ( $Color, $Text ) = @_;
-
-    my $Coloring = ( is_interactive() && !$ENV{OTOBOCODEPOLICY_NOCOLOR} );
-
-    return $Text unless $Coloring;
-
-    return Term::ANSIColor::color($Color) . $Text . Term::ANSIColor::color('reset');
 }
 
 1;
