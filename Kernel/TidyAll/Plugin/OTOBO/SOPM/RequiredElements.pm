@@ -2,7 +2,7 @@
 # OTOBO is a web-based ticketing system for service organisations.
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2019-2025 Rother OSS GmbH, https://otobo.io/
+# Copyright (C) 2019-2026 Rother OSS GmbH, https://otobo.io/
 # --
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -78,7 +78,6 @@ sub validate_source {
     my $License         = 0;
     my $BuildDate       = 0;
     my $BuildHost       = 0;
-    my $DescriptionDE   = 0;
     my $DescriptionEN   = 0;
     my $Table           = 0;
     my $DatabaseUpgrade = 0;
@@ -100,9 +99,6 @@ sub validate_source {
         }
         elsif ( $Line =~ /<Description Lang="en">[^<>]+<\/Description>/ ) {
             $DescriptionEN = 1;
-        }
-        elsif ( $Line =~ /<Description Lang="de">[^<>]+<\/Description>/ ) {
-            $DescriptionDE = 1;
         }
         elsif ( $Line =~ /<License>([^<>]+)<\/License>/ ) {
             $License = 1;
@@ -176,6 +172,11 @@ sub validate_source {
         if ( $Line =~ m{ <PackageIsBuildable>(?: \d )<\/PackageIsBuildable> }xms ) {
             $BuildFlag = 1;
         }
+    }
+
+    # check for multi-line english description
+    if ( $Code =~ /<Description Lang="en"><!\[CDATA\[[^<>]+\]\]><\/Description>/s ) {
+        $DescriptionEN = 1;
     }
 
     if ($Table) {
