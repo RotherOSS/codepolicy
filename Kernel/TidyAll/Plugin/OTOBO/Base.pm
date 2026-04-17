@@ -82,12 +82,6 @@ sub _GetFileContents {
 
     open( my $FileHandle, '<', $Filename ) || die "Can't open $Filename\n";    ## no critic qw(OTOBO::ProhibitOpen)
 
-    #    my $FileHandle;
-    #    if ( !open $FileHandle, '<', $Filename ) {    ## no critic qw(OTOBO::ProhibitOpen)
-    #        print STDERR "Can't open $Filename\n";
-    #        die;
-    #    }
-
     my $Content = do { local $/ = undef; <$FileHandle> };
     close $FileHandle;
 
