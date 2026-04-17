@@ -47,6 +47,12 @@ our $FrameworkVersionMinor = 0;
 our $ThirdpartyModule      = 0;
 our @FileList              = ();    # all files in current repository
 
+# handle coloring
+#   environment variable ANSI_COLORS_DISABLED is used by Term::ANSIColor
+if ( !is_interactive() || $ENV{OTOBOCODEPOLICY_NOCOLOR} ) {
+    $ENV{ANSI_COLORS_DISABLED} = 1;
+}
+
 sub new_from_conf_file {
     my ( $Class, $ConfigFile, %Param ) = @_;
 
@@ -56,10 +62,6 @@ sub new_from_conf_file {
         no_cache   => 1,
         no_backups => 1,
     );
-
-    if ( !is_interactive() || $ENV{OTOBOCODEPOLICY_NOCOLOR} ) {
-        $ENV{ANSI_COLORS_DISABLED} = 1;
-    }
 
     # Reset when a new object is created
     $FrameworkVersionMajor = 0;
