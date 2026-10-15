@@ -126,7 +126,7 @@ sub transform_source {
         for my $Line ( split /\n/, $Code ) {
             $LineCounter++;
 
-            last ORIGINLINE if $LineCounter > 5;
+            last ORIGINLINE if $LineCounter > 10;
 
             next ORIGINLINE if $Line !~ m{ ^ [ ]* (?: \# | \/\/ ) [ ]+ \$origin: [ ]+ [^\n]+ $ }xms;
 
@@ -185,7 +185,7 @@ sub validate_source {
 
             $Counter++;
 
-            last LINE if $Counter > 5;
+            last LINE if $Counter > 10;
 
             next LINE if $Line !~ m{ ^ [ ]* (?: \# | \/\/ ) [ ]+ \$origin: [ ]+ [^\n]+ $ }xms;
 
