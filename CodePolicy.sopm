@@ -9,7 +9,7 @@
     <URL>https://otobo.de/</URL>
     <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
     <Description Lang="en">OTOBO code quality checks.</Description>
-    <Description Lang="hu">OTOBO kódminőség ellenőrzések.</Description>
+    <Description Lang="hu">OTOBO kódminőség-ellenőrzések.</Description>
     <PackageIsDownloadable>0</PackageIsDownloadable>
     <PackageIsBuildable>0</PackageIsBuildable>
     <Filelist>
