@@ -1,94 +1,95 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2019-2024 Rother OSS GmbH, https://otobo.io/
-# This file is distributed under the same license as the OTOBO Installation
-# Guide package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+# Hungarian translations for CodePolicy Documentation.
+# Copyright (C) 2019-2026 Rother OSS GmbH, https://otobo.io/
+# This file is distributed under the same license as the CodePolicy documentation.
 #
-#, fuzzy
+# Balázs Úr <balazs@urbalazs.hu>, 2026.
 msgid ""
 msgstr ""
-"Project-Id-Version: OTOBO Installation Guide rel-10.1\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: CodePolicy Documentation 10.1.x\n"
+"Report-Msgid-Bugs-To: https://github.com/RotherOSS/codepolicy/issues\n"
 "POT-Creation-Date: 2024-05-16 09:14+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2026-11-17 15:20+0100\n"
+"Last-Translator: Balázs Úr <balazs@urbalazs.hu>\n"
+"Language-Team: Hungarian <https://translate.otobo.org/projects/otobo-10-1/"
+"addons/manuals/codepolicy-documentation/hu/>\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 26.08.1\n"
 
 #: ../../content/index.rst:16
 msgid "Sacrifice to Sphinx"
-msgstr ""
+msgstr "Áldozat a Szfinxnek"
 
 #: ../../content/index.rst:19
 msgid "Description"
-msgstr ""
+msgstr "Leírás"
 
 #: ../../content/index.rst:20
 msgid "OTOBO code quality checks."
-msgstr ""
+msgstr "OTOBO kódminőség-ellenőrzések."
 
 #: ../../content/index.rst:23
 msgid "System requirements"
-msgstr ""
+msgstr "Rendszerkövetelmények"
 
 #: ../../content/index.rst:26
 msgid "Framework"
-msgstr ""
+msgstr "Keretrendszer"
 
 #: ../../content/index.rst:27
 msgid "OTOBO 10.1.x"
-msgstr ""
+msgstr "OTOBO 10.1.x"
 
 #: ../../content/index.rst:30
 msgid "Packages"
-msgstr ""
+msgstr "Csomagok"
 
 #: ../../content/index.rst:31 ../../content/index.rst:35
 msgid "\\-"
-msgstr ""
+msgstr "\\-"
 
 #: ../../content/index.rst:34
 msgid "Third-party software"
-msgstr ""
+msgstr "Harmadik féltől származó szoftverek"
 
 #: ../../content/index.rst:38
 msgid "Usage"
-msgstr ""
+msgstr "Használat"
 
 #: ../../content/index.rst:41
 msgid "Setup"
-msgstr ""
+msgstr "Beállítás"
 
 #: ../../content/index.rst:44
 msgid "About"
-msgstr ""
+msgstr "Névjegy"
 
 #: ../../content/index.rst:47
 msgid "Contact"
-msgstr ""
+msgstr "Kapcsolat"
 
 #: ../../content/index.rst:48
 msgid "Rother OSS GmbH"
-msgstr ""
+msgstr "Rother OSS GmbH"
 
 #: ../../content/index.rst:49
 msgid "Email: hello@otobo.de"
-msgstr ""
+msgstr "E-mail: hello@otobo.de"
 
 #: ../../content/index.rst:50
 msgid "Web: https://otobo.io"
-msgstr ""
+msgstr "Web: https://otobo.io"
 
 #: ../../content/index.rst:53
 msgid "Version"
-msgstr ""
+msgstr "Verzió"
 
 #: ../../content/index.rst:54
 msgid ""
 "Author: |doc-vendor| / Version: |doc-version| / Date of release: |doc-"
 "datestamp|"
 msgstr ""
-
+"Szerző: |doc-vendor| / Verzió: |doc-version| / Kiadás dátuma: |doc-datestamp|"
